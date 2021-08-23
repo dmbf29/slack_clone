@@ -7,16 +7,12 @@
   <div class="chatroom">
     <h1>#<%= @chatroom.name %></h1>
     <div>
+      <%# document.getElementById('messages').dataset.chatroomId %>
       <div id="messages" data-chatroom-id="<%= @chatroom.id %>">
         <% if @chatroom.messages.any? %>
           <% @chatroom.messages.each do |message| %>
-            <div class="message-container" id="message-<%= message.id %>">
-              <i class="author">
-                <span><%= message.user.nickname %></span>
-                <small><%= message.created_at.strftime("%a %b %e at %l:%M%p") %></small>
-              </i>
-              <p><%= message.content %></p>
-            </div>
+            <%#= render message %>
+            <%= render 'messages/message', message: message %>
           <% end %>
         <% else %>
           <div class="message-container">
