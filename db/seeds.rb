@@ -3,19 +3,19 @@ Chatroom.destroy_all
 
 puts 'Creating users....'
 User.create!(
-  email: 'douglas.berkley@lewagon.org'
+  email: 'douglas.berkley@lewagon.org',
   password: '123123',
   nickname: 'dmbf29'
 )
 
 User.create!(
-  email: 'yann.klein@lewagon.org'
+  email: 'yann.klein@lewagon.org',
   password: '123123',
   nickname: 'yannklein'
 )
 
 User.create!(
-  email: 'trouni@lewagon.org'
+  email: 'trouni@lewagon.org',
   password: '123123',
   nickname: 'trouni'
 )
