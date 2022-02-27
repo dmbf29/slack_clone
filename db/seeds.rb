@@ -1,4 +1,5 @@
 User.destroy_all
+Chatroom.destroy_all
 
 puts 'Creating users....'
 User.create!(
@@ -19,3 +20,13 @@ User.create!(
   nickname: 'trouni'
 )
 puts "...created #{User.count} users."
+
+puts 'Creating chatrooms....'
+Chatroom.create!(
+  name: 'general'
+)
+
+Chatroom.create!(
+  name: '795'
+)
+puts "...created #{Chatroom.count} chatrooms."
