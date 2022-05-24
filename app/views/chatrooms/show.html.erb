@@ -4,19 +4,15 @@
       <%= link_to "##{chatroom.name}", chatroom_path(chatroom), class: "list-group-item #{'active' if chatroom == @chatroom}" %>
     <% end %>
   </div>
-  <div class="chatroom">
+  <!-- 1. Connected the controller. 2. I embeded the id in the HTML so the JS can access it. -->
+  <div class="chatroom" data-controller='chatroom-subscription' data-chatroom-subscription-chatroom-id-value="<%= @chatroom.id %>">
     <h1>#<%= @chatroom.name %></h1>
     <div>
-      <div id="messages" data-chatroom-id="<%= @chatroom.id %>">
+      <!-- 1. Added a target on the messages div so i can insert messages here -->
+      <div id="messages" data-chatroom-id="<%= @chatroom.id %>" data-chatroom-subscription-target='messages'>
         <% if @chatroom.messages.any? %>
           <% @chatroom.messages.each do |message| %>
-            <div class="message-container" id="message-<%= message.id %>">
-              <i class="author">
-                <span><%= message.user.nickname %></span>
-                <small><%= message.created_at.strftime("%a %b %e at %l:%M%p") %></small>
-              </i>
-              <p><%= message.content %></p>
-            </div>
+            <%= render 'messages/message', message: message %>
           <% end %>
         <% else %>
           <div class="message-container">
